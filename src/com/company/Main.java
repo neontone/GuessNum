@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class Main {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String answer;
+        String askUserName;
 
         do {
             int myNum = rand.nextInt(100) + 1;
@@ -33,35 +34,49 @@ public class Main {
                 System.out.println("Loser!");
             }
 
-            answer = askYesNo("Do you want to play again? (Y/N)");
-
-        } while (answer.equalsIgnoreCase("y"));
+        } while (askYesNo("Do you want to play again? (Y/N)"));
 
         System.out.println("Bye!");
+
     }
 
     static int askInt(String msg, int min, int max) {
-        for (; ; ) {
-            System.out.println(msg);
-            int answer = scan.nextInt();
-            if (answer >= min && answer <= max) {
-                return answer;
+        while (true) {
+            try {
+                System.out.println(msg);
+                int answer = scan.nextInt();
+                if (answer >= min && answer <= max) {
+                    return answer;
+                }
+            } catch (InputMismatchException ex) {
+                System.out.println("It isn't a number :(");
+                scan.next();
             }
-            System.out.printf("Please enter number from %d to %d\n", min, max);
+            System.out.printf("Only numbers from %d to %d\n", min, max);
         }
     }
 
-    static String askYesNo(String msg)
-
-    {
+    static boolean askYesNo(String msg) {
         while (true) {
             System.out.println(msg);
             String answer = scan.next();
-            if (answer.equalsIgnoreCase("y")
-                    || answer.equalsIgnoreCase("n")) {
-                return answer;
+            boolean isY = answer.equalsIgnoreCase("y");
+            boolean isN = answer.equalsIgnoreCase("n");
+            if (isY || isN) {
+                return isY;
             }
             System.out.println("Enter 'y' or 'n'");
         }
+
+
     }
+
+    static String askUserName(String msg) {
+        System.out.println("Enter your name");
+        String askUserName = scan.next();
+        return askUserName;
+    }
+
 }
+
+
