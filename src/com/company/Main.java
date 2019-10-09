@@ -11,6 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
         String Username;
+        int counter = 0;
 
         do {
 
@@ -21,11 +22,13 @@ public class Main {
                 int userNum = askInt("Please, enter your guess:", 1, 100);
 
                 if (myNum > userNum) {
+                    counter+=1;
                     System.out.println("My number is greater than yours");
                 } else if (myNum < userNum) {
+                    counter+=1;
                     System.out.println("My number is less than yours");
                 } else {
-                    System.out.println("You won!");
+                    System.out.println("You won! Turns: " + counter);
                     userWon = true;
                     break;
                 }
