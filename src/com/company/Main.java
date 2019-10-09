@@ -10,9 +10,10 @@ public class Main {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String askUserName;
+        String Username;
 
         do {
+
             int myNum = rand.nextInt(100) + 1;
             boolean userWon = false;
 
@@ -32,9 +33,18 @@ public class Main {
 
             if (!userWon) {
                 System.out.println("Loser!");
+
+            }
+            {
+                System.out.println("Please enter your name?");
+                Username = scan.next();
+                if(Username.matches("[a-zA-Z]*") == false){
+                    return;
+
+                }
             }
 
-        } while (askYesNo("Do you want to play again? (Y/N)"));
+        } while (askYesNo("Do you want to play again, " + Username + "? (Y/N)"));
 
         System.out.println("Bye!");
 
@@ -71,13 +81,6 @@ public class Main {
 
     }
 
-        static String askUserName(String msg) {
-        System.out.println("Enter your name");
-        String UserName = scan.next(); {
-            return UserName;
-        }
-
-    }
 }
 
 
