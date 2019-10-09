@@ -71,12 +71,13 @@ public class Main {
 
     }
 
-    static String askUserName(String msg) {
+        static String askUserName(String msg) {
         System.out.println("Enter your name");
-        String askUserName = scan.next();
-        return askUserName;
-    }
+        String UserName = scan.next(); {
+            return UserName;
+        }
 
+    }
 }
 
 
