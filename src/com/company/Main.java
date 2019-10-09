@@ -44,9 +44,9 @@ public class Main {
                 }
             }
 
-        } while (askYesNo("Do you want to play again, " + Username + "? (Y/N)"));
+        } while (askYesNo("Do you want to play again? (Y/N)"));
 
-        System.out.println("Bye!");
+        System.out.println("Bye, " + Username + "!");
 
     }
 
